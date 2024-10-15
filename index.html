@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage Example</title>
+</head>
+<body>
+    <h1>Add your Favorite Words</h1>
+    <input type="text" id="userInput" placeholder="Enter your favorite word"/>
+    <button id="saveInput" style="margin: 16px;">Save Word</button>
+
+    <script>
+        const userInput = document.getElementById('userInput');
+        const saveInput = document.getElementById('saveInput')
+
+        userInput.value = localStorage.getItem('userInputText') || '';
+
+        saveInput.addEventListener('click', () => {
+            localStorage.setItem('userInputText', userInput.value);
+
+        });
+
+
+    </script>
+</body>
+</html>
