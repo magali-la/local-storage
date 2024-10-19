@@ -7,17 +7,24 @@
 </head>
 <body>
     <h1>Add your Favorite Words</h1>
-    <input type="text" id="userInput" placeholder="Enter your favorite word"/>
-    <button id="saveInput" style="margin: 16px;">Save Word</button>
+    <form id="wordForm">
+        <input type="text" id="userInput" style="padding:8px; border-radius: 4px;" placeholder="Enter your favorite word"/>
+        <button type="submit" id="saveInput" style="margin: 16px; padding: 8px; border-radius: 8px;">Save Word</button>
+    </form>
 
     <script>
         const userInput = document.getElementById('userInput');
-        const saveInput = document.getElementById('saveInput')
+        const wordForm = document.getElementById('wordForm');
 
         userInput.value = localStorage.getItem('userInputText') || '';
 
-        saveInput.addEventListener('click', () => {
+        wordForm.addEventListener('submit', (event) => {
+            event.preventDefault();
             localStorage.setItem('userInputText', userInput.value);
+
+            console.log('Saved word:', userInput.value);
+
+            userInput.value = '';
 
         });
 
