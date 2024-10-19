@@ -11,16 +11,22 @@
         <input type="text" id="userInput" style="padding:8px; border-radius: 4px;" placeholder="Enter your favorite word"/>
         <button type="submit" id="saveInput" style="margin: 16px; padding: 8px; border-radius: 8px;">Save Word</button>
     </form>
+    <p id="displayWord" style="font-weight: 700;"></p>
 
     <script>
         const userInput = document.getElementById('userInput');
         const wordForm = document.getElementById('wordForm');
+        const displayWord = document.getElementById('displayWord');
 
+        const savedWord = localStorage.getItem('userInputText') || '';
         userInput.value = localStorage.getItem('userInputText') || '';
+        displayWord.textContent = savedWord;
 
         wordForm.addEventListener('submit', (event) => {
             event.preventDefault();
-            localStorage.setItem('userInputText', userInput.value);
+            const newWord = userInput.value;
+
+            localStorage.setItem('userInputText', newWord);
 
             console.log('Saved word:', userInput.value);
 
